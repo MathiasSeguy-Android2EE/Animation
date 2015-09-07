@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Animation</string>
+
+    <string name="main_activity_subtitle">androidV1.0</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_drawable">DrawableActivity</string>
+    <string name="txvViewProperty">ViewPropertyAnimation is simple so simple</string>
+    <string name="action_screen_record">Start recording screen</string>
+    <string name="title_activity_scene">Scene Activity</string>
+    <!--Used to give a name to the elements used for transition between main and scene activity-->
+    <string name="txvText_transition">txvText_transition</string>
+    <string name="btnEdit_transition">btnEdit_transition</string>
+    <string name="imvSprite_transition">imvSprite_transition</string>
+    <string name="btnDrawable_transition">btnDrawable_transition</string>
+</resources>

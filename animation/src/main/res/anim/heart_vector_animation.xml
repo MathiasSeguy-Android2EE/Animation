@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- res/anim/rotation.xml -->
+
+    <objectAnimator
+        android:duration="1000"
+        android:propertyName="scaleX"
+        android:valueFrom="0"
+        android:valueTo="10" />
+    <objectAnimator
+        android:duration="1000"
+        android:propertyName="scaleY"
+        android:valueFrom="0"
+        android:valueTo="10" />
+        <objectAnimator
+            android:startOffset="1000"
+            android:duration="1000"
+            android:propertyName="scaleX"
+            android:valueFrom="10"
+            android:valueTo="1" />
+        <objectAnimator
+            android:startOffset="1000"
+            android:duration="1000"
+            android:propertyName="scaleY"
+            android:valueFrom="10"
+            android:valueTo="1" />
+</set>

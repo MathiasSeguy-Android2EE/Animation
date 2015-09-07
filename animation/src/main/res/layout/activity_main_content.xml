@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+        <com.android2ee.droidcon.greece.animation.customviews.BlueDot
+        android:id="@+id/blueDot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".MainActivity">
+        <!--<com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder-->
+            <!--android:id="@+id/llActivityTransition"-->
+            <!--android:tag="ActivityTransition"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center_vertical">-->
+        <TextView
+            android:id="@+id/txvResult"
+            android:transitionName="@string/txvText_transition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world"
+            android:layout_weight="1"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/btnDrawable"
+            android:transitionName="@string/btnDrawable_transition"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/ic_drawable"/>
+        <Button
+            android:id="@+id/btnScene"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/ic_scene"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:transitionName="@string/btnEdit_transition"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="right"
+                android:background="@mipmap/ic_edit"/>
+
+            <ImageView
+                android:id="@+id/imvSprite"
+                android:transitionName="@string/imvSprite_transition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/attack_magic_animation"
+                />
+        </LinearLayout>
+        <!--</com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder>-->
+    </LinearLayout>
+
+
+</FrameLayout>

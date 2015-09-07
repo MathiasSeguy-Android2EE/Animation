@@ -1,0 +1,187 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.android2ee.droidcon.greece.animation.DrawableActivity"
+    >
+    <!--<com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder
+            android:id="@+id/llDrawableScreenRecorder"
+        android:tag="DrawableScreenRecorder"-->
+    <com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder
+        android:id="@+id/llDrawableScreenRecorder"
+        android:tag="TransitionDrawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+
+        <TextView
+            android:id="@+id/txvClip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drawAct_ClipDrawable"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/imvClipHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/clip_drawable_horizontal"/>
+
+            <ImageView
+                android:id="@+id/imvClipVertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/clip_drawable_vertical"/>
+
+            <ImageView
+                android:id="@+id/imvClipHorizontalTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/clip_drawable_horizontal_top"/>
+
+            <ImageView
+                android:id="@+id/imvClipVerticalLeft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/clip_drawable_vertical_left"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txvRotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drawAct_RotateDrawable"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/imvRotateWheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/rotate_drawable_wheel"/>
+
+            <ImageView
+                android:id="@+id/imvRotateAndroid2ee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/rotate_drawable_android2ee"/>
+
+            <ImageView
+                android:id="@+id/imvRotateAntiClockwiseWheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/rotate_drawable_anti_wheel"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txvAnimationDrawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drawAct_AnimationDrawable"/>
+
+
+        <ImageView
+            android:id="@+id/imvAnimationDrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/animation_drawable"/>
+
+        <TextView
+            android:id="@+id/txvScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/drawAct_ScaleDrawable"/>
+        <ImageView
+            android:id="@+id/imvScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/scale_drawable"/>
+
+        <TextView
+            android:id="@+id/txvTransition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/drawAct_TransitionDrawable"/>
+
+        <ImageView
+            android:id="@+id/imvTransition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/transition_drawable"/>
+
+
+        <TextView
+            android:id="@+id/txvAnimatedStateList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/drawAct_AnimatedStateListDrawable"/>
+
+        <!--Works only with a listener or an instanciation in the Activity-->
+        <ImageView
+            android:id="@+id/imvAnimatedStateList"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:src="@drawable/animated_statelist_drawable"/>
+
+        <TextView
+            android:id="@+id/txvAnimatedVector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/drawAct_AnimatedVectorDrawable"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/imvAnimatedVector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/animate_vector_android_500"/>
+        <ImageView
+            android:id="@+id/imvAnimatedVector2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/animate_vector_heart"/>
+    </LinearLayout>
+    </LinearLayout>
+    </com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder>
+</ScrollView>

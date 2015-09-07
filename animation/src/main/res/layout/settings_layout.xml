@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/lilRootSetting"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:background="@color/accent"
+              android:layout_width="match_parent"
+              android:layout_height="0dp">
+    <TextView
+        android:id="@+id/txvHelloSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:shadowColor="#FF0000"
+        android:shadowDy="16"
+        android:shadowDx="16"
+        android:text="Settings"/>
+    <Button
+        android:id="@+id/btnDoNotPress"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:textSize="18sp"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/circle_shape"
+        android:text="Do not press"/>
+</LinearLayout>

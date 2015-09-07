@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/animvectordrawable.xml -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:drawable="@drawable/ic_heart_svg" >
+    <!--<target-->
+        <!--android:name="android"-->
+        <!--android:animation="@anim/rotation_for_vector_android_accessibility" />-->
+    <target
+        android:name="rotationGroup"
+        android:animation="@anim/rotation_for_android_svg" />
+    <target
+        android:name="pathName"
+        android:animation="@anim/simple_shape_vector_animation" />
+    <!--Current ObjectAnimator only animate group not path-->
+    <target
+        android:name="heart"
+        android:animation="@anim/heart_vector_animation" />
+</animated-vector>

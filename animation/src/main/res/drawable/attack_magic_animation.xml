@@ -1,0 +1,15 @@
+
+<animation-list  xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/selected" android:oneshot="true">
+    <item android:drawable="@drawable/attack_magic1" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic2" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic3" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic4" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic5" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic6" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic7" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic8" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic9" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic10" android:duration="100" />
+    <item android:drawable="@drawable/attack_magic10" android:duration="300" />
+    <item android:drawable="@drawable/attack_magic1" android:duration="100" />
+</animation-list>

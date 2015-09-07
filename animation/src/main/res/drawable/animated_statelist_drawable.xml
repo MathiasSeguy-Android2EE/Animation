@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:enterFadeDuration="300"
+    android:exitFadeDuration="300">
+    <!--Sorry below v21 there is no animated selector
+    you can just fade in and fade out-->
+    <item
+        android:id="@+id/item_pressed"
+        android:state_pressed="true">
+        <bitmap
+            android:src="@drawable/ic_android2ee"/>
+    </item>
+
+    <item
+        android:id="@+id/item_normal">
+        <bitmap
+            android:src="@drawable/ic_settings_black_24dp"/>
+    </item>
+
+</selector>

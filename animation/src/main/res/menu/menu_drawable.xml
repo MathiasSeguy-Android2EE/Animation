@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.android2ee.droidcon.greece.animation.DrawableActivity">
+    <item android:id="@+id/action_settings"
+          android:title="@string/action_settings"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_screen_record"
+          android:title="@string/action_screen_record"
+          android:icon="@drawable/ic_action_screen_record"
+          android:orderInCategory="1"
+          app:showAsAction="always"/>
+</menu>

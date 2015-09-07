@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:height="256dp"
+        android:width="256dp"
+        android:viewportHeight="600"
+        android:viewportWidth="600" >
+    <group
+        android:name="rotationGroup"
+        android:pivotX="300.0"
+        android:pivotY="300.0"
+        android:rotation="45.0" >
+        <path
+            android:name="pathName"
+            android:fillColor="#000000"
+            android:pathData="M300,70 l 0,-70 70,70 0,0 -70,70z" />
+    </group>
+    <group
+        android:name="heart">
+        <path
+            android:name="heart_shape"
+            android:fillColor="#FF0000"
+            android:pathData="M24 42.7l-2.9-2.63
+            C10.8 30.72 4 24.55 4 17 4 10.83 8.83 6 15 6
+            c3.48 0 6.82 1.62 9 4.17
+            C26.18 7.62 29.52 6 33 6
+            c6.17 0 11 4.83 11 11 0 7.55-6.8 13.72-17.1 23.07
+            L24 42.7z" />
+    </group>
+</vector>

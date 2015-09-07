@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_pressed"
+        android:state_pressed="true">
+        <bitmap
+            android:src="@drawable/ic_android2ee"/>
+    </item>
+
+    <item
+        android:id="@+id/item_normal">
+        <bitmap
+            android:src="@drawable/ic_settings_black_24dp"/>
+    </item>
+
+    <transition
+        android:fromId="@+id/item_pressed"
+        android:toId="@+id/item_normal">
+        <animation-list  android:id="@+id/selected" android:oneshot="true">
+            <item android:drawable="@drawable/attack_magic1" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic2" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic3" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic4" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic5" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic6" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic7" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic8" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic9" android:duration="100" />
+            <item android:drawable="@drawable/attack_magic10" android:duration="100" />
+            <!--insure the last frame is the same as your drawable-->
+            <item android:drawable="@drawable/ic_settings_black_24dp" android:duration="100" />
+        </animation-list>
+        </transition>
+</animated-selector>

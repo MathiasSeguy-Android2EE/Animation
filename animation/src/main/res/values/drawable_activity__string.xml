@@ -1,0 +1,9 @@
+<resources>
+    <string name="drawAct_ClipDrawable">ClipDrawable</string>
+    <string name="drawAct_RotateDrawable">RotateDrawable</string>
+    <string name="drawAct_ScaleDrawable">ScaleDrawable</string>
+    <string name="drawAct_AnimationDrawable">AnimationDrawable</string>
+    <string name="drawAct_AnimatedStateListDrawable">AnimatedStateListDrawable (Level 21 min)</string>
+    <string name="drawAct_TransitionDrawable">TransitionDrawable</string>
+    <string name="drawAct_AnimatedVectorDrawable">AnimatedVectorDrawable</string>
+</resources>
