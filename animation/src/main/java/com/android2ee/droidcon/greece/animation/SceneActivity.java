@@ -171,6 +171,10 @@ public class SceneActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if (id == android.R.id.home){
+            //if you forget this case, animation won't run when pushing the up/home button
+            supportFinishAfterTransition();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
