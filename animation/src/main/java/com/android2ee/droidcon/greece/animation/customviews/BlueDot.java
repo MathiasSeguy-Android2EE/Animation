@@ -41,6 +41,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.util.AttributeSet;
@@ -114,6 +115,17 @@ public class BlueDot extends View {
         };
     }
 
+    /**
+     * @return
+     * a list of colors
+     */
+    private int[] getradialColors() {
+        return new int[]{
+                getResources().getColor(R.color.rainbow_blue),
+                getResources().getColor(R.color.rainbow_purple)
+        };
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -124,13 +136,20 @@ public class BlueDot extends View {
         radius = Math.min(w / 8, h / 8);
         //initialize the shader (stuff that make the color of the paint depending on the location in the screen and a set of colors)
         //@chiuki at droidcon london
-        int[] rainbow = getRainbowColors();
-        Shader shader = new LinearGradient(0, 0, 0, w, rainbow,
+        Shader shader = new LinearGradient(0, 0, 0, w, getRainbowColors(),
                 null, Shader.TileMode.MIRROR);
         Matrix matrix = new Matrix();
         matrix.setRotate(90);
         shader.setLocalMatrix(matrix);
         dotPaint.setShader(shader);
+
+        Shader rainbowRadialShader=new RadialGradient(centerX+radius/4, centerY+radius/2,
+                radius, getRainbowColors(),null, Shader.TileMode.MIRROR);
+        Shader otherShader=new RadialGradient(centerX+radius/4, centerY+radius/2,
+                radius, getradialColors(),null, Shader.TileMode.MIRROR);
+        paintUsual.setShader(otherShader);
+        dotPaint.setShader(rainbowRadialShader);
+
     }
 
     /***********************************************************
@@ -172,6 +191,10 @@ public class BlueDot extends View {
      * Direction of each dots
      */
     float[] deltaX, deltaY;
+    /**
+     * The Shaders for all the paint that will draw each dot
+     */
+    Shader[] dotPaintShaders;
 
     /**
      * Start animating the rondBleu
@@ -194,6 +217,7 @@ public class BlueDot extends View {
                 positiveYDirection = new boolean[numberOfSplittedCircle];
                 deltaX = new float[numberOfSplittedCircle];
                 deltaY = new float[numberOfSplittedCircle];
+                dotPaintShaders=new Shader[numberOfSplittedCircle];
                 //calculate the cos and sin in the i direction (360*i/numberOfCircle) is the direction
                 cosDirI = new double[numberOfSplittedCircle];
                 sinDirI = new double[numberOfSplittedCircle];
@@ -204,6 +228,9 @@ public class BlueDot extends View {
                     sinDirI[i] = Math.sin((i * (2 * Math.PI / (float) numberOfSplittedCircle)));
                     positiveXDirection[i] = true;
                     positiveYDirection[i] = true;
+                    dotPaintShaders[i]=new RadialGradient(splittedCirlceX[i]+radius/4,
+                            splittedCirlceY[i]+radius/2,
+                            radius, getradialColors(),null, Shader.TileMode.MIRROR);
                 }
                 smallDotsRadius = initialDotsRadius = (radius / (float) numberOfSplittedCircle);
                 animToto = getObjectAnimator();
@@ -260,7 +287,7 @@ public class BlueDot extends View {
 
     /**
      * The property to animate
-     *
+     * It will make the ball move around like after an explosion and bounce on the walls
      * @param parameter value of the state to calculate the animation of the object
      */
     private void setToto(int parameter) {
@@ -305,6 +332,12 @@ public class BlueDot extends View {
         }
         if (parameter < 25 && !animTotoRepeating) {
             smallDotsRadius = ((25 - parameter) * radius + parameter * initialDotsRadius) / 25;
+            for (int i = 0; i < numberOfSplittedCircle; i++) {
+                //update the shaders
+                dotPaintShaders[i]=new RadialGradient(splittedCirlceX[i]+radius/4,
+                        splittedCirlceY[i]+radius/2,
+                        radius, getradialColors(),null, Shader.TileMode.MIRROR);
+            }
         }
 //        smallDotsRadius =((radius- initialDotsRadius)*(101-parameter))/100;
         //then invalidate the dirty rectangle
@@ -358,8 +391,8 @@ public class BlueDot extends View {
         for (int i = 0; i < numberOfSplittedCircle; i++) {
             deltaX[i] = ((float) (splittedCirlceX[i] - centerX)) / 100;
             deltaY[i] = ((float) (splittedCirlceY[i] - centerY)) / 100;
-            Log.e("BlueDot", "calcul pour X " + i + " : " + splittedCirlceX[i] + "-" + centerX + "/100=" + deltaX[i]);
-            Log.e("BlueDot", "calcul pour Y " + i + " : " + splittedCirlceY[i] + "-" + centerY + "/100=" + deltaY[i]);
+//            Log.e("BlueDot", "calcul pour X " + i + " : " + splittedCirlceX[i] + "-" + centerX + "/100=" + deltaX[i]);
+//            Log.e("BlueDot", "calcul pour Y " + i + " : " + splittedCirlceY[i] + "-" + centerY + "/100=" + deltaY[i]);
         }
         return ObjectAnimator.ofInt(this, "tata", 0, 100);
     }
@@ -387,6 +420,7 @@ public class BlueDot extends View {
             //find the y coordinates of the dot i
             splittedCirlceY[i] = (int) (centerY + ((100 - parameter) * deltaY[i]));
 
+
             //find if we need to reverse the movement in y of dot i to stay in the area of the view
             //update dirty zone
             currentRect.left = splittedCirlceX[i] - radius;
@@ -398,6 +432,12 @@ public class BlueDot extends View {
         // smallDotsRadius =((radius- initialDotsRadius)*parameter)/100;
         if (parameter > 50) {
             smallDotsRadius = ((radius - initialDotsRadius) * parameter / 50) + (2 * initialDotsRadius - radius);
+            for (int i = 0; i < numberOfSplittedCircle; i++) {
+                //update the shaders
+                dotPaintShaders[i]=new RadialGradient(splittedCirlceX[i]+radius/4,
+                        splittedCirlceY[i]+radius/2,
+                        radius, getradialColors(),null, Shader.TileMode.MIRROR);
+            }
         }
         //then invalidate the dirty rectangle
         invalidate(dirtyRect);
@@ -420,6 +460,7 @@ public class BlueDot extends View {
         }
         if (animating && postICS) {
             for (int i = 0; i < numberOfSplittedCircle; i++) {
+                dotPaint.setShader(dotPaintShaders[i]);
                 canvas.drawCircle(splittedCirlceX[i], splittedCirlceY[i], smallDotsRadius, dotPaint);
             }
         }
