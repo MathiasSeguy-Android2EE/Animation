@@ -48,6 +48,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 
 import com.android2ee.droidcon.greece.animation.R;
@@ -79,18 +81,25 @@ public class BlueDot extends View {
     public BlueDot(Context context) {
         super(context);
         init();
+        initGingerAnim(context);
     }
+
 
     public BlueDot(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
+        initGingerAnim(context);
     }
 
     public BlueDot(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+        initGingerAnim(context);
     }
 
+    /**
+     * Initialize the paint
+     */
     private void init() {
         paintUsual = new Paint();
         dotPaint = new Paint();
@@ -98,6 +107,16 @@ public class BlueDot extends View {
         // Define how to draw text
         paintUsual.setStyle(Paint.Style.FILL_AND_STROKE);
         paintUsual.setAntiAlias(true);
+    }
+
+    /**
+     * Initialize the Gingerbread animation is necessary
+     * @param context
+     */
+    private void initGingerAnim(Context context) {
+        if(!getResources().getBoolean(R.bool.postICS)){
+            animGinger= AnimationUtils.loadAnimation(context, R.anim.bump);
+        }
     }
 
     /**
@@ -159,6 +178,10 @@ public class BlueDot extends View {
      * The ObjectAnimator that handles the animation
      */
     ObjectAnimator animToto, animTata;
+    /**
+     * The animation played when under gingerbread
+     */
+    Animation animGinger;
     /***
      * Is post IceCreamSandwich
      */
@@ -271,7 +294,13 @@ public class BlueDot extends View {
                 animToto.start();
             }
         } else {
-            //do nothing fucking gingerbread
+            //do nothing fucking gingerbread, or do the minimal
+            if (numberOfSplittedCircle == NOT_INITIALIZED) {
+                numberOfSplittedCircle=1;
+
+            }
+            this.startAnimation(animGinger);
+
         }
     }
 

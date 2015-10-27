@@ -10,7 +10,7 @@
     <com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder
         android:id="@+id/llDrawableScreenRecorder"
         android:tag="TransitionDrawable"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical">
@@ -164,6 +164,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/drawAct_AnimatedVectorDrawable"/>
+        <ImageView
+            android:id="@+id/imvAnimatedVector3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFF"
+            android:src="@drawable/android2ee"/>
+        <!--my_android2ee_animated-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -182,6 +189,7 @@
             android:layout_weight="1"
             android:src="@drawable/animate_vector_heart"/>
     </LinearLayout>
+
     </LinearLayout>
     </com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder>
 </ScrollView>

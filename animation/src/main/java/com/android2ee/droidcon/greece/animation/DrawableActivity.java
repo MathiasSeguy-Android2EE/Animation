@@ -11,6 +11,7 @@ import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -88,6 +89,14 @@ public class DrawableActivity extends MotherActivity {
                     Toast.makeText(DrawableActivity.this, "animatedVector2", Toast.LENGTH_LONG).show();
                 }
             });
+//            ImageView imvVectorAnimated3 = (ImageView) findViewById(R.id.imvAnimatedVector3);
+//            animatedVectorDrawable3 = (AnimatedVectorDrawable) imvVectorAnimated3.getDrawable();
+//            imvVectorAnimated3.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startAnimatedVectorDrawable3();
+//                }
+//            });
         }
     }
 
@@ -354,7 +363,7 @@ public class DrawableActivity extends MotherActivity {
      *  Managing VectorAnimation
      *  You need VectorDrawable, and events
      **********************************************************/
-    AnimatedVectorDrawable animatedVectorDrawable,animatedVectorDrawable2;
+    AnimatedVectorDrawable animatedVectorDrawable,animatedVectorDrawable2,animatedVectorDrawable3;
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void startAnimatedVectorDrawable(){
         animatedVectorDrawable.start();
@@ -363,7 +372,11 @@ public class DrawableActivity extends MotherActivity {
     private void startAnimatedVectorDrawable2(){
         animatedVectorDrawable2.start();
     }
-
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void startAnimatedVectorDrawable3(){
+        Log.e("DrawableActivity","Animation android2ee started");
+        animatedVectorDrawable3.start();
+    }
 
     /***********************************************************
      * Managing Menu

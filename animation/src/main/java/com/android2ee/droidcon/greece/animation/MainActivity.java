@@ -1,5 +1,7 @@
 package com.android2ee.droidcon.greece.animation;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -123,12 +125,37 @@ public class MainActivity extends MotherActivity {
         blueDot = (BlueDot) findViewById(R.id.blueDot);
         lilRootSettingPanel = (LinearLayout) findViewById(R.id.lilRootSetting);
         btnDoNotPress = (Button) findViewById(R.id.btnDoNotPress);
+        btnDoNotPressBack= (Button) findViewById(R.id.btnDoNotPressBack);
         blueDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 blueDot.getLayoutParams().width = width;
                 blueDot.getLayoutParams().height = height;
                 blueDot.startAnimation(postICS);
+            }
+        });
+        btnDoNotPress.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                flipBtnDoNotPress();
+            }
+        });
+        btnDoNotPressBack.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                flipBtnDoNotPress();
             }
         });
     }
@@ -230,7 +257,7 @@ public class MainActivity extends MotherActivity {
     /** The root layout of the panel */
     private LinearLayout lilRootSettingPanel;
     /** A button is that panel*/
-    private Button btnDoNotPress;
+   private Button btnDoNotPress,btnDoNotPressBack;
     /** the nut drawable that rotate clockwise*/
     RotateDrawable nutSettingRotateDrawable = null;
     /** the magician MenuItem that appears to turn the nut*/
@@ -245,6 +272,7 @@ public class MainActivity extends MotherActivity {
     Runnable openCloseSettingsPanelRunnable = null;
     /** The handler that drops the openCloseSettingsPanelRunnable in the UI thread*/
     Handler openCloseSettingsPanelHandler = null;
+
 
     /**
      * Called when the nutSettingMenuItem or the magicianMenuItem is clicked
@@ -289,6 +317,8 @@ public class MainActivity extends MotherActivity {
                 //update the size of the button according to the size of the panel
                 btnDoNotPress.getLayoutParams().height = step / 2;
                 btnDoNotPress.getLayoutParams().width = step / 2;
+                btnDoNotPressBack.getLayoutParams().height = step / 2;
+                btnDoNotPressBack.getLayoutParams().width = step / 2;
                 //update the height of the panel
                 lilRootSettingPanel.getLayoutParams().height = step;
                 //and ask for redraw it (call invalidate on it)
@@ -333,7 +363,83 @@ public class MainActivity extends MotherActivity {
         };
     }
 
-    /***********************************************************
+    /**************************************************
+     * Making the don't push button flipping
+     * postHoneyComb
+     * **************************************************
+     */
+    Animator flipAnimatorIn;
+    Animator flipAnimatorOut;
+
+    /**
+     * Call when the btnDoNotPress is clicked
+     */
+    public void flipBtnDoNotPress(){
+        if(postICS){
+            animateItem();
+        }
+    }
+    @SuppressLint("NewApi")
+    private void initialiseFlipAnimator(){
+        if(flipAnimatorIn==null){
+            btnDoNotPressBack.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+            btnDoNotPress.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+            flipAnimatorOut= AnimatorInflater.loadAnimator(this,R.animator.flip_out);
+            flipAnimatorOut.setTarget(btnDoNotPress);
+            flipAnimatorIn= AnimatorInflater.loadAnimator(this,R.animator.flip_in);
+            flipAnimatorIn.setTarget(btnDoNotPressBack);
+            flipAnimatorOut.addListener(
+                    new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            btnDoNotPress.setVisibility(View.VISIBLE);
+                            btnDoNotPressBack.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            btnDoNotPress.setVisibility(View.GONE);
+                            btnDoNotPressBack.setVisibility(View.VISIBLE);
+                            flipAnimatorIn.start();
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    });
+
+            flipAnimatorIn.addListener(
+                    new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) { }
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            btnDoNotPressBack.setLayerType(View.LAYER_TYPE_NONE, null);
+                            btnDoNotPress.setLayerType(View.LAYER_TYPE_NONE, null);
+
+                        }
+                        @Override
+                        public void onAnimationCancel(Animator animation) {}
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {}
+                    });
+        }
+    }
+    @SuppressLint("NewApi")
+    private void animateItem(){
+        initialiseFlipAnimator();
+        flipAnimatorOut.start();
+//        flipAnimatorIn.setStartDelay(1500);
+
+    }
+  /***********************************************************
      * Managing animation of the  bottom button (the magician)
      * When this button is pushed, it will animate the drawable
      * giving the illusion that the magician is animating itself
@@ -410,7 +516,11 @@ public class MainActivity extends MotherActivity {
         //find (in a retro compatible way) the x position of the ImageView to animate
         imSpritesX = ViewCompat.getX(imvSprites);
         //then launch the animation when the spritesAnimationDrawable stops
-        btnEditAnimationHandler.postDelayed(btnEditAnimationRunnable, DURATION * (spritesAnimationDrawable.getNumberOfFrames() - 2));
+        if (postICS) {
+            btnEditAnimationHandler.postDelayed(btnEditAnimationRunnable, DURATION * (spritesAnimationDrawable.getNumberOfFrames() - 2));
+        }else{
+            btnEdit.startAnimation(btnEditTranslationTweenAnimation);
+        }
     }
 
     /**
@@ -427,7 +537,6 @@ public class MainActivity extends MotherActivity {
         //but don't loose to much time
         if (!postICS) {
             btnEditTranslationTweenAnimation = AnimationUtils.loadAnimation(this, R.anim.btn_edit_animation);
-            btnEdit.startAnimation(btnEditTranslationTweenAnimation);
         }else{
             //initialize the handler
             btnEditAnimationHandler = new Handler();
