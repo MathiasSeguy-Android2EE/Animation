@@ -1,44 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/lilRootSetting"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:background="@color/accent"
-              android:layout_width="match_parent"
-              android:layout_height="0dp">
-    <TextView
-        android:id="@+id/txvHelloSetting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:shadowColor="#FF0000"
-        android:shadowDy="16"
-        android:shadowDx="16"
-        android:text="Settings"/>
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scvRootSetting"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
 
-    <Button
-        android:id="@+id/btnDoNotPressBack"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:textSize="18sp"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/ic_settings_black_24dp"
-        android:visibility="gone"
-        android:textColor="#FFFFFF"
-        android:text="Not implemented"/>
-    <Button
-            android:id="@+id/btnDoNotPress"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:textSize="18sp"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-        android:textColor="#FF0000"
-            android:background="@drawable/ic_settings_black_24dp"
-            android:text="Do not press"/>
-    </FrameLayout>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/accent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txvHelloSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#FF0000"
+            android:shadowDx="16"
+            android:shadowDy="16"
+            android:text="Settings"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/lilContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint="An editText"
+                    android:inputType="text" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint="Another editText"
+                    android:inputType="text" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A ghost from gingerbread :)" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnDoNotPressBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@drawable/ic_settings_black_24dp"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="Not implemented"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnDoNotPress"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@drawable/circle_shape"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_gravity="center"
+                android:text="Do not press"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla blablabla " />
+
+    </LinearLayout>
+</ScrollView>

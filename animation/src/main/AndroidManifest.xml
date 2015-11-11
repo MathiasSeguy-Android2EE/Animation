@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".mainactivity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,23 +21,23 @@
         <activity
             android:name=".EditActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".mainactivity.MainActivity" >
         </activity>
         <activity
             android:name=".DrawableActivity"
             android:label="@string/title_activity_drawable"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".mainactivity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.android2ee.droidcon.greece.animation.MainActivity" />
+                android:value=".mainactivity.MainActivity" />
         </activity>
         <activity
             android:name=".SceneActivity"
             android:label="@string/title_activity_scene"
-            android:parentActivityName=".MainActivity"  >
+            android:parentActivityName=".mainactivity.MainActivity"  >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.android2ee.droidcon.greece.animation.MainActivity" />
+                android:value=".mainactivity.MainActivity" />
         </activity>
     </application>
 

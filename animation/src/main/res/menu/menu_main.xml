@@ -8,13 +8,13 @@
         android:orderInCategory="1"
         android:title="settings"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/elf_setting"
-        android:icon="@drawable/elf_for_rotation_settings"
-        android:orderInCategory="2"
-        android:title="settings"
-        app:showAsAction="always"
-        android:visible="false"/>
+    <!--<item-->
+        <!--android:id="@+id/elf_setting"-->
+        <!--android:icon="@drawable/elf_for_rotation_settings"-->
+        <!--android:orderInCategory="2"-->
+        <!--android:title="settings"-->
+        <!--app:showAsAction="always"-->
+        <!--android:visible="false"/>-->
 
     <item
         android:id="@+id/action_edit"
