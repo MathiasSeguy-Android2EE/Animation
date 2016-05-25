@@ -166,29 +166,27 @@
             android:text="@string/drawAct_AnimatedVectorDrawable"/>
         <ImageView
             android:id="@+id/imvAnimatedVector3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FFF"
-            android:src="@drawable/android2ee"/>
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/animated_android_roundtrip"/>
         <!--my_android2ee_animated-->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_vertical">
+        android:layout_weight="1">
         <ImageView
             android:id="@+id/imvAnimatedVector"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_centerInParent="true"
             android:src="@drawable/animate_vector_android_500"/>
         <ImageView
             android:id="@+id/imvAnimatedVector2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="140dp"
+            android:layout_height="96dp"
+            android:layout_centerInParent="true"
             android:src="@drawable/animate_vector_heart"/>
-    </LinearLayout>
+    </RelativeLayout>
 
     </LinearLayout>
     </com.android2ee.droidcon.greece.animation.customviews.LinearLayoutScreenRecorder>

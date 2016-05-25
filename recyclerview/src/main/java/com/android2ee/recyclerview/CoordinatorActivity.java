@@ -35,7 +35,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -46,7 +45,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.android2ee.recyclerview.viewpager.MyPageTransformer;
 import com.android2ee.recyclerview.viewpager.MyPagerAdapter;
 
 /**
@@ -96,9 +94,11 @@ public class CoordinatorActivity extends AppCompatActivity {
         //this instanciation only works with honeyComb and more
         //if you want it all version use AnimatorProxy of the nineoldAndroid lib
         //@see:http://stackoverflow.com/questions/15767729/backwards-compatible-pagetransformer
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB){
-            viewPager.setPageTransformer(true, new MyPageTransformer());
-        }
+
+        //TODO uncomment those lines and the opengl bug disappears
+//        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB){
+//            viewPager.setPageTransformer(true, new MyPageTransformer());
+//        }
         //AND CLUE TABLAYOUT AND VIEWPAGER
         tabLayout.setupWithViewPager(viewPager);
     }

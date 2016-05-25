@@ -50,7 +50,7 @@ import com.android2ee.droidcon.greece.animation.SceneActivity;
  * Created by Mathias Seguy - Android2EE on 03/11/2015.
  */
 public class MainActivityAnimGinger extends MainActivityAnimMother {
-
+    private static final String TAG = "MainActivityAnimGinger";
 
     @Override
     public void initializeView(MainActivity activity){

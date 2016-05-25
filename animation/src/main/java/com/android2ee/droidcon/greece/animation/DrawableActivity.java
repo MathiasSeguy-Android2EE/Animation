@@ -5,13 +5,13 @@ import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.LevelListDrawable;
 import android.graphics.drawable.RotateDrawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,21 +82,24 @@ public class DrawableActivity extends MotherActivity {
             });
             ImageView imvVectorAnimated2 = (ImageView) findViewById(R.id.imvAnimatedVector2);
             animatedVectorDrawable2 = (AnimatedVectorDrawable) imvVectorAnimated2.getDrawable();
-            imvVectorAnimated2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startAnimatedVectorDrawable2();
-                    Toast.makeText(DrawableActivity.this, "animatedVector2", Toast.LENGTH_LONG).show();
-                }
-            });
-//            ImageView imvVectorAnimated3 = (ImageView) findViewById(R.id.imvAnimatedVector3);
-//            animatedVectorDrawable3 = (AnimatedVectorDrawable) imvVectorAnimated3.getDrawable();
-//            imvVectorAnimated3.setOnClickListener(new View.OnClickListener() {
+//            imvVectorAnimated2.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
-//                    startAnimatedVectorDrawable3();
+//                    startAnimatedVectorDrawable2();
+//                    Toast.makeText(DrawableActivity.this, "animatedVector2", Toast.LENGTH_LONG).show();
 //                }
 //            });
+            ImageView imvVectorAnimated3 = (ImageView) findViewById(R.id.imvAnimatedVector3);
+            backupRoundTrip = (LevelListDrawable) imvVectorAnimated3.getDrawable();
+            currentBackupDrawable= (AnimatedVectorDrawable) backupRoundTrip.getCurrent();
+            //launch animation when the click is done on the imageView
+            imvVectorAnimated3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchAnimBackup();
+                }
+            });
+            launchAnimBackup();
         }
     }
 
@@ -363,7 +366,7 @@ public class DrawableActivity extends MotherActivity {
      *  Managing VectorAnimation
      *  You need VectorDrawable, and events
      **********************************************************/
-    AnimatedVectorDrawable animatedVectorDrawable,animatedVectorDrawable2,animatedVectorDrawable3;
+    AnimatedVectorDrawable animatedVectorDrawable,animatedVectorDrawable2;
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void startAnimatedVectorDrawable(){
         animatedVectorDrawable.start();
@@ -372,10 +375,45 @@ public class DrawableActivity extends MotherActivity {
     private void startAnimatedVectorDrawable2(){
         animatedVectorDrawable2.start();
     }
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void startAnimatedVectorDrawable3(){
-        Log.e("DrawableActivity","Animation android2ee started");
-        animatedVectorDrawable3.start();
+
+
+    /***********************************************************
+     *  Managing backup button round trip
+     **********************************************************/
+     /**
+     * The LevelList that contains only two AnimatedVectorDrawable,
+     * the ones used to go from on to the other
+     */
+    LevelListDrawable backupRoundTrip;
+    /**
+     * The current AnimatedVector diaplsyed by the RoundTrip
+     */
+    AnimatedVectorDrawable currentBackupDrawable;
+    /**
+     * To know is the animation have been already launched
+     */
+    boolean backupRoundTripFirstLaunched=true;
+    /**
+     * Launch the animation on the currentAnimatedVectorDrawable
+     */@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void launchAnimBackup(){
+        if(!backupRoundTripFirstLaunched) {
+            if (backupRoundTrip.getLevel() == 1) {
+                //then reverse
+                backupRoundTrip.setLevel(0);
+            } else {
+                //then reverse
+                backupRoundTrip.setLevel(1);
+            }
+        }else{
+            backupRoundTripFirstLaunched=false;
+        }
+        //find the current AnimatedVectorDrawable displayed
+        currentBackupDrawable = (AnimatedVectorDrawable) backupRoundTrip.getCurrent();
+        //start the animation
+        currentBackupDrawable.start();
+        //You need the API 23 to add a AnimationListener using registerAnimationCallBack
+        //So if you want to permanently animate your animation, use xml
     }
 
     /***********************************************************

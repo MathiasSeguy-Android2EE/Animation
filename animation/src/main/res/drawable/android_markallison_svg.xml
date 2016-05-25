@@ -7,6 +7,7 @@
     <!--Make group to animate them separately using ObjectAnimator-->
     <!--Define the pivot in the group they will be used by ObjectAnimator-->
     <!--Morphing bijection: Body=Body left_arm=red and right_arm=shadows-->
+
     <path
         android:name="body"
         android:fillColor="#9FBF3B"

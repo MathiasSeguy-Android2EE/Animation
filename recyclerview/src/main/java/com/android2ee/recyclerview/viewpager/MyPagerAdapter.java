@@ -68,6 +68,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         fragments.add(new LinearRecyclerViewFrag());
         fragments.add(new GridRecyclerViewFrag());
         fragments.add(new StaggeredRecyclerViewFrag());
+        //TODO uncomment that line and the opengl bug disappears
         fragments.add(new CardViewRecyclerViewFrag());
 
     }

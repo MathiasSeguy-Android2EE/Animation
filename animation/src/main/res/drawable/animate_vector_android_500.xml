@@ -4,8 +4,8 @@
                  android:drawable="@drawable/ic_android_markallison_svg" >
     <target
         android:name="tete"
+        android:animation="@anim/translation_for_android_svg" />
+    <target
+        android:name="bras"
         android:animation="@anim/rotation_for_android_svg" />
-    <!--<target-->
-        <!--android:name="v"-->
-        <!--android:animation="@anim/path_morph" />-->
 </animated-vector>

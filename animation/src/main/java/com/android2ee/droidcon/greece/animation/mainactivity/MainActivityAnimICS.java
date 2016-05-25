@@ -269,6 +269,7 @@ public class MainActivityAnimICS extends MainActivityAnimMother {
                     0,
                     100)
                     .setDuration(3000);
+            btnEditObjectAnimator.setStartDelay(spritesAnimationDrawable.getNumberOfFrames()*activity.DURATION );
         }
         //animate the magician
         if (spritesAnimationDrawable.isRunning()) {
@@ -284,25 +285,27 @@ public class MainActivityAnimICS extends MainActivityAnimMother {
      * This method is called in onCreate and create the AnimationDrawable
      */
     private void initializeSpritesAnimation() {
-        spritesAnimationDrawable = (AnimationDrawable) imvSprites.getDrawable();
         //define the Animated drawable
         //after ICS you can do dynamic stuff
-        spritesAnimationDrawable = new AnimationDrawable();
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic1), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic2), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic3), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic4), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic5), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic6), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic7), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic8), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic9), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic10), activity.DURATION);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic10), activity.DURATION * 3);
-        spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic1), activity.DURATION);
-        imvSprites.setImageDrawable(spritesAnimationDrawable);
+        if(spritesAnimationDrawable==null) {
+            spritesAnimationDrawable = new AnimationDrawable();
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic1), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic2), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic3), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic4), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic5), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic6), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic7), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic8), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic9), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic10), activity.DURATION);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic10), activity.DURATION * 3);
+            spritesAnimationDrawable.addFrame(activity.getResources().getDrawable(R.drawable.attack_magic1), activity.DURATION);
+            spritesAnimationDrawable.setOneShot(true);
+
+            imvSprites.setImageDrawable(spritesAnimationDrawable);
+        }
 //        imvSprites.setBackgroundDrawable(spritesAnimationDrawable);
-        spritesAnimationDrawable.setOneShot(true);
 
         //then find the value you need to animate the button
         btnEditX0 = activity.btnEdit.getX() ;
