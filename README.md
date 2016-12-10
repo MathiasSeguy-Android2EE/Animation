@@ -5,4 +5,5 @@ It contains code for Drawable animations, ViewProperty, CustomView, ObjectAnimat
 It works from Gingerbread (damn it) to Marshmallow.
 You have all the code you need to make great animations in your applications.
 Enjoy.
+...
 
