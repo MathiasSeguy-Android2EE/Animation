@@ -1,13 +1,27 @@
 apply plugin: 'com.android.application'
-
+project.ext{
+    //natif tools
+    //in your SDK mpanager
+    buildToolsVersion = "26.0.2"
+    //https://developer.android.com/topic/libraries/support-library/revisions.html
+    supportLibVersion = "27.0.1"
+    //https://developer.android.com/topic/libraries/support-library/revisions.html
+    supportAnnotationVersion = "27.0.0"
+    //android architecture components
+    archiComponentVersion = "1.0.0"
+    ///target and compuile SDK
+    compileSDKandTargetSDK=26
+    ///min SDK
+    minSDK=14
+}
 android {
-    compileSdkVersion 22
-    buildToolsVersion "23.0.0"
+    compileSdkVersion project.ext.compileSDKandTargetSDK
+    buildToolsVersion project.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.android2ee.animations"
-        minSdkVersion 9
-        targetSdkVersion 22
+        minSdkVersion project.ext.minSDK
+        targetSdkVersion project.ext.compileSDKandTargetSDK
         versionCode 1
         versionName "1.0"
     }
@@ -20,6 +34,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation "com.android.support:design:${supportLibVersion}"
+    implementation "com.android.support:cardview-v7:${supportLibVersion}"
+//    22.0.2
 }
